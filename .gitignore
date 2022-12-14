@@ -1,0 +1,7 @@
+.idea
+configuration/application.ini
+__pycache__/
+app/__pycache__/
+/venv
+/configuration/application.ini.docker.bot
+/configuration/application.ini.docker.worker
