@@ -1,0 +1,30 @@
+version: '3.1'
+
+services:
+#  app:
+#    network_mode: host
+#    restart: always
+#    depends_on:
+#      - postgres
+#    build: .
+#    command: python main.py configuration/application.ini.docker.bot
+#  worker:
+#    network_mode: host
+#    restart: always
+#    depends_on:
+#      - postgres
+#    build: .
+#    command: python main.py configuration/application.ini.docker.worker
+  postgres:
+    image: postgres:15.1
+    environment:
+      POSTGRES_DB: bot
+      POSTGRES_USER: bot
+      POSTGRES_PASSWORD: password
+    restart: always
+    volumes:
+      - ./postgres-data:/var/lib/postgresql
+    ports:
+      - "5432:5432"
+  redis:
+
