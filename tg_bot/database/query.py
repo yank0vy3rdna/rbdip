@@ -43,8 +43,8 @@ async def get_language_by_user_id(tg_id: int):
     return user[0].language
 
 
-async def upload_photo(user: User, photo: bytes):
-    return await Photo.create(user=user, photo=photo)
+async def upload_photo(user: User):
+    return await Photo.create(user=user)
 
 
 async def get_photo(photo_id: str):
