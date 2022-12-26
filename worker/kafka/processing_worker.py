@@ -2,9 +2,9 @@ import asyncio
 import json
 import logging
 
-from app.database.query import get_photo
-from app.image_processing import ProcessingTypes, process_image
-from app.kafka import Topics, init_consumer, init_producer
+from tg_bot.database import get_photo
+from worker.image_processing import ProcessingTypes, process_image
+from worker.kafka import Topics, init_consumer, init_producer
 
 
 async def processing():

@@ -4,9 +4,10 @@ from aiogram import Bot, Dispatcher
 from aiogram.contrib.fsm_storage.redis import RedisStorage2
 from aiogram.types import BotCommand
 
+from app.read_conf import config
 from tg_bot.database import db_start, db_close_connections
 from tg_bot.handlers import register_handlers
-from app.read_conf import config, AppType
+from tg_bot.kafka.processing_bot import processing
 
 
 async def set_commands(bot: Bot):
@@ -38,22 +39,9 @@ async def run_bot():
     await dp.storage.wait_closed()
 
 
-async def worker():
-    from app.kafka.processing_worker import processing
-
-    await db_start()
-    await processing()
-
-
 def main():
-    if config.app.type == AppType.BOT:
-        from app.kafka.processing_bot import processing
-        loop_processing = asyncio.new_event_loop()
-        # thread = threading.Thread(target=loop_processing.run_until_complete, args=(processing(bot),))
-        # thread.start()
-        loop_processing.run_until_complete(asyncio.gather(processing(bot), run_bot(), loop=loop_processing))
-    elif config.app.type == AppType.WORKER:
-        asyncio.run(worker())
+    loop_processing = asyncio.new_event_loop()
+    loop_processing.run_until_complete(asyncio.gather(processing(bot), run_bot(), loop=loop_processing))
 
 
 if __name__ == '__main__':

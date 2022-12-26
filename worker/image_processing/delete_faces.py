@@ -2,7 +2,7 @@ import io
 
 from PIL import Image, ImageFilter
 
-from app.database.model import Photo
+from tg_bot.database.model import Photo
 from app.utils.request import send_request_yandex_vision
 
 

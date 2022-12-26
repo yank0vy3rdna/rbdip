@@ -1,6 +1,6 @@
 from tortoise import Tortoise
 
-from app.database.model import User, Photo
+from tg_bot.database.model import User, Photo
 from app.read_conf import config
 
 

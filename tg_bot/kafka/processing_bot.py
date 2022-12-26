@@ -5,9 +5,9 @@ from io import BytesIO
 
 from aiogram import Bot
 
-from app.database.query import get_photo
-from app.image_processing import ProcessingTypes
-from app.kafka import Topics, init_consumer, init_producer
+from tg_bot.database import get_photo
+from worker.image_processing import ProcessingTypes
+from tg_bot.kafka import Topics, init_consumer, init_producer
 
 
 async def processing(bot: Bot):

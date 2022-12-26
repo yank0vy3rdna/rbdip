@@ -3,10 +3,10 @@ from io import BytesIO
 from aiogram.dispatcher import FSMContext
 from aiogram.types import Message
 
-from app.database.query import upload_photo, get_or_create_user
-from app.handlers import States, get_language
-from app.image_processing import ProcessingTypes
-from app.kafka.processing_bot import produce_photo_to_process
+from tg_bot.database.query import upload_photo, get_or_create_user
+from tg_bot.handlers import States, get_language
+from worker.image_processing import ProcessingTypes
+from tg_bot.kafka.processing_bot import produce_photo_to_process
 
 
 async def vignette_face(message: Message):
