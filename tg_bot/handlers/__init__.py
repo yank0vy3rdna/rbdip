@@ -2,8 +2,8 @@ from aiogram import Dispatcher
 from aiogram.dispatcher.filters import Text
 from aiogram.types import ContentType
 
-from app.handlers.default import *
-from app.handlers.picture import *
+from tg_bot.handlers.default import *
+from tg_bot.handlers.picture import *
 
 
 def register_handlers(dp: Dispatcher):

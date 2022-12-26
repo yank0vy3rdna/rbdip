@@ -5,7 +5,7 @@ from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.state import StatesGroup, State
 from aiogram.types import Message, ReplyKeyboardMarkup, ReplyKeyboardRemove
 
-from app.database.query import change_language, get_language_by_user_id
+from tg_bot.database.query import change_language, get_language_by_user_id
 from app.utils.clickhouse import clickhouse
 
 

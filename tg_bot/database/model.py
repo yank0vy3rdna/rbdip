@@ -10,7 +10,6 @@ class User(models.Model):
 class Photo(models.Model):
     id = fields.UUIDField(pk=True)
     user = fields.ForeignKeyField('models.User', null=False)
-    photo = fields.BinaryField(null=False)
 
 
 class Config(models.Model):
