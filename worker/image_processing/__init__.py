@@ -1,5 +1,6 @@
 from enum import Enum
 
+from app.kafka.photo_processing import PhotoObject
 from tg_bot.database.model import Photo
 from worker.image_processing.delete_faces import delete_faces
 from worker.image_processing.detail import detail
@@ -18,7 +19,7 @@ class ProcessingTypes(Enum):
     SMOOTH = "smooth"
 
 
-async def process_image(photo: Photo, processing_type: ProcessingTypes) -> Photo:
+async def process_image(photo: PhotoObject) -> PhotoObject:
     proc_f = {
         ProcessingTypes.VIGNETTE: vignette,
         ProcessingTypes.DELETE_FACES: delete_faces,
@@ -26,5 +27,5 @@ async def process_image(photo: Photo, processing_type: ProcessingTypes) -> Photo
         ProcessingTypes.SHARP: sharp,
         ProcessingTypes.NEGATIVE: negative,
         ProcessingTypes.SMOOTH: smooth
-    }[processing_type]
+    }[photo.processing_type]
     return await proc_f(photo)

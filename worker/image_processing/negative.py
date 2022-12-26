@@ -2,10 +2,10 @@ import io
 
 from PIL import Image, ImageFilter
 
-from tg_bot.database.model import Photo
+from app.kafka.photo_processing import PhotoObject
 
 
-async def negative(photo: Photo):
+async def negative(photo: PhotoObject):
     img = Image.open(io.BytesIO(photo.photo))
     img = img.filter(ImageFilter.EMBOSS)
     img_byte_arr = io.BytesIO()

@@ -2,10 +2,10 @@ import io
 
 from PIL import Image, ImageFilter
 
-from tg_bot.database.model import Photo
+from app.kafka.photo_processing import PhotoObject
 
 
-async def sharp(photo: Photo):
+async def sharp(photo: PhotoObject):
     img = Image.open(io.BytesIO(photo.photo))
     img = img.filter(ImageFilter.SHARPEN)
     img_byte_arr = io.BytesIO()

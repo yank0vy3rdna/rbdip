@@ -2,11 +2,11 @@ import io
 
 from PIL import Image, ImageFilter
 
-from tg_bot.database.model import Photo
+from app.kafka.photo_processing import PhotoObject
 from app.utils.request import send_request_yandex_vision
 
 
-async def delete_faces(photo: Photo):
+async def delete_faces(photo: PhotoObject):
     result = send_request_yandex_vision(photo.photo)
     img = Image.open(io.BytesIO(photo.photo))
     for list_x, list_y in result:

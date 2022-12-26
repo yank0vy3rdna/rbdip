@@ -2,10 +2,10 @@ import io
 
 from PIL import Image, ImageFilter
 
-from tg_bot.database.model import Photo
+from app.kafka.photo_processing import PhotoObject
 
 
-async def detail(photo: Photo):
+async def detail(photo: PhotoObject):
     img = Image.open(io.BytesIO(photo.photo))
     img = img.filter(ImageFilter.DETAIL)
     img_byte_arr = io.BytesIO()
